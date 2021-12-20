@@ -28,6 +28,28 @@ input, select, textarea, button {
     color: #333;
 }
 
+.contato-principal #contact-input{
+    width: 45%;
+    padding: 10px 15px;
+    margin: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: transparent;
+    color: #333;
+}
+
+.contato-principal #contact-btn {
+    width: 45%;
+    padding: 10px 15px;
+    margin: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    background-color: transparent;
+    background-color: #7ab829;
+    cursor: pointer;
+    color: #fff;
+}
+
 .texto-branco {
     color: #ffffff;
 }
