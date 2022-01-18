@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use App\Fornecedor;
+use App\Models\Fornecedor;
 
 class FornecedorSeeder extends Seeder
 {
@@ -15,7 +15,7 @@ class FornecedorSeeder extends Seeder
      */
     public function run()
     {
-        //Instanciando o objeto ***Recomendado2***
+        /*Instanciando o objeto ***Recomendado2***
         $fornecedor = new Fornecedor();
         $fornecedor->nome = 'Fornecedor 100';
         $fornecedor->site = 'fornecedor100.com.br';
@@ -38,6 +38,8 @@ class FornecedorSeeder extends Seeder
             'site' => "fornecedor200.com.br",
             'uf' => "RS",
             'email' => "contato@fornecedor200.com.br"
-        ]);
+        ]);*/
+
+        Fornecedor::factory()->count(100)->create();
     }
 }
