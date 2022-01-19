@@ -42,11 +42,15 @@ class ContatoController extends Controller
         //Realizar a validação dos dados do formulário no request
         $req->validate([
             'nome' => 'required | min:3 | max:40',
+            /*Caso queria q um campo seja unico é so fazer o seguinte
+               'nome' => 'required | min:3 | max:40 | unique:site_contatos'
+                No caso é só inserir o nome da tabela depois do atributo unique: */
             'telefone' => 'required',
-            'email' => 'required | email | min:12',
-            'motivo_contato' => 'required',
-            'mensagem' => 'required',
+            'email' => 'email | min:12',
+            'motivo_contatos_id' => 'required',
+            'mensagem' => 'required| max:2000',
         ]);
-
+        SiteContato::create($req->all());
+        return redirect()->route('site.index');
     }
 }
