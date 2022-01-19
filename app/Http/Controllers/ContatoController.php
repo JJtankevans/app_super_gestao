@@ -32,16 +32,21 @@ class ContatoController extends Controller
             Porém para fazer dessas duas maneiras é necessário habilitar a váriavel $fillable
             dentro do model que deve ser salvo;
         */
-        return view('site.contato');
+        $motivo_contatos = [
+            '1' => "Dúvida",
+            '2' => "Elogio",
+            '3' => "Reclamação"
+        ];
+        return view('site.contato', ['motivo_contatos' => $motivo_contatos]);
     }
 
     public function store(Request $req) {
         
         //Realizar a validação dos dados do formulário no request
         $req->validate([
-            'nome' => 'required',
+            'nome' => 'required | min:3 | max:40',
             'telefone' => 'required',
-            'email' => 'required',
+            'email' => 'required | email | min:12',
             'motivo_contato' => 'required',
             'mensagem' => 'required',
         ]);

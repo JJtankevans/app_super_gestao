@@ -1,20 +1,20 @@
 {{ $slot }}
 <form action={{ route('site.contato') }} method="POST">
     @csrf
-    <input type="text" name="nome" placeholder="Nome" class={{ $classe }} id="contact-input">
+    <input type="text" name="nome" value="{{ old('nome') }}" placeholder="Nome" class={{ $classe }} id="contact-input">
     <br>
-    <input type="text" name="telefone" placeholder="Telefone" class={{ $classe }} id="contact-input">
+    <input type="text" name="telefone" value="{{ old('telefone') }}" placeholder="Telefone" class={{ $classe }} id="contact-input">
     <br>
-    <input type="email" name="email" placeholder="E-mail" class={{ $classe }} id="contact-input">
+    <input type="email" name="email" value="{{ old('email') }}" placeholder="E-mail" class={{ $classe }} id="contact-input">
     <br>
     <select name="motivo_contato" class={{ $classe }} id="contact-input">
         <option value="">Qual o motivo do contato?</option>
-        <option value="1">Dúvida</option>
-        <option value="2">Elogio</option>
-        <option value="3">Reclamação</option>
+        @foreach($motivo_contatos as $key => $motivo)
+            <option value="{{$key}}" {{ old('motivo_contato') == $key ? 'selected' : ''}}>{{$motivo}}</option>
+        @endforeach
     </select>
     <br>
-    <textarea name="mensagem" class={{ $classe }} id="contact-input" placeholder="Preencha aqui a sua mensagem"></textarea>
+    <textarea name="mensagem" class={{ $classe }} id="contact-input" placeholder="Preencha aqui a sua mensagem">{{ old('mensagem') }}</textarea>
     <br>
     <button type="submit" class={{ $classe }} id="contact-btn">ENVIAR</button>
 </form>
