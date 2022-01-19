@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\SiteContato;
+use App\Models\MotivoContato;
 
 class ContatoController extends Controller
 {
@@ -32,11 +33,7 @@ class ContatoController extends Controller
             Porém para fazer dessas duas maneiras é necessário habilitar a váriavel $fillable
             dentro do model que deve ser salvo;
         */
-        $motivo_contatos = [
-            '1' => "Dúvida",
-            '2' => "Elogio",
-            '3' => "Reclamação"
-        ];
+        $motivo_contatos = MotivoContato::all();
         return view('site.contato', ['motivo_contatos' => $motivo_contatos]);
     }
 
