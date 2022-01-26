@@ -11,12 +11,13 @@ class SobreNosController extends Controller
     public function __construct()
     {   
         $this->middleware(LogAcessoMiddleware::class);
-    }*/
-    //Outra forma de usar middleware diretamente no controller é assim 
+    }
+    
+    Outra forma de usar middleware diretamente no controller é assim:
     public function __construct()
     {   
         $this->middleware('log.acesso');
-    }
+    }*/
 
     public function sobreNos(){
         return view('site.sobre_nos');
