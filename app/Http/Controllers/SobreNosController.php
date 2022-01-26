@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 
 
 class SobreNosController extends Controller
@@ -12,6 +12,11 @@ class SobreNosController extends Controller
     {   
         $this->middleware(LogAcessoMiddleware::class);
     }*/
+    //Outra forma de usar middleware diretamente no controller é assim 
+    public function __construct()
+    {   
+        $this->middleware('log.acesso');
+    }
 
     public function sobreNos(){
         return view('site.sobre_nos');

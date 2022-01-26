@@ -37,7 +37,10 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            /*Caso queira adicionar o middleware para todas as rotas do arquivo de web é
+            só incluir o arquivo aqui como no exemplo a seguir: 
             \App\Http\Middleware\LogAcessoMiddleware::class,
+            */
         ],
 
         'api' => [
@@ -64,5 +67,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'log.acesso' => \App\Http\Middleware\LogAcessoMiddleware::class,
     ];
 }
