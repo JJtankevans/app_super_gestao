@@ -13,18 +13,15 @@ Route::get('/contato', [ContatoController::class, 'contato'])->name("site.contat
 Route::post('/contato', [ContatoController::class, 'store'])->name("site.contato");
 Route::get('/login',function() { echo "Login (view)"; })->name("site.login");
 
-Route::prefix('/app') -> group(function() {
+Route::prefix('/app') ->middleware('autenticacao:padrao') -> group(function() {
     Route::get('/clientes', function() { echo "Client (view)";})
-        ->name("app.clientes")
-        ->middleware('autenticacao');
+        ->name("app.clientes");
 
     Route::get('/fornecedores', [FornecedorController::class, 'index'])
-        ->name("app.fornecedores")
-        ->middleware('autenticacao');
+        ->name("app.fornecedores");
 
     Route::get('/produtos',function() { echo "Produtos (view)";})
-    ->name("app.produtos")
-    ->middleware('autenticacao');
+    ->name("app.produtos");
 });
 
 Route::fallback(function() {

@@ -14,9 +14,16 @@ class AutenticacaoMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $metodo_autenticacao)
     {
-        //return $next($request);
+        if($metodo_autenticacao == "padrao"){
+            echo "Verifica o usuário e senha no banco de dados".'<br>';
+        }
+
+        if($metodo_autenticacao == "ldap"){
+            echo "Verifica o usuário e senha no AD".'<br>';
+        }
+
         if(true) {
             return $next($request);
         }else {
